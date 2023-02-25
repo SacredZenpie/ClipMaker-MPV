@@ -29,7 +29,7 @@ local options = {
 	-- Property expansion is supported (with %{} at top level, ${} when nested), see https://mpv.io/manual/master/#property-expansion
 	output_template = "%F-[%s-%e]%M",
 	-- Scale video to a certain height, keeping the aspect ratio. -1 disables it.
-	scale_height = -1,
+	scale_height = 480,
 	-- Change the FPS of the output video, dropping or duplicating frames as needed.
 	-- -1 means the FPS will be unchanged from the source.
 	fps = -1,
@@ -37,7 +37,7 @@ local options = {
 	-- used on the encode. If this is set to <= 0, the video bitrate will be set
 	-- to 0, which might enable constant quality modes, depending on the
 	-- video codec that's used (VP8 and VP9, for example).
-	target_filesize = 2500,
+	target_filesize = 5000,
 	-- If true, will use stricter flags to ensure the resulting file doesn't
 	-- overshoot the target filesize. Not recommended, as constrained quality
 	-- mode should work well, unless you're really having trouble hitting
@@ -55,8 +55,8 @@ local options = {
 	-- raw (rawvideo/pcm_s16le).
 	-- mp3 (libmp3lame)
 	-- and gif
-	output_format = "webm-vp8",
-	twopass = true,
+	output_format = "webm-vp9",
+	twopass = false,
 	-- If set, applies the video filters currently used on the playback to the encode.
 	apply_current_filters = true,
 	-- If set, writes the video's filename to the "Title" field on the metadata.
@@ -66,13 +66,13 @@ local options = {
 	additional_flags = "",
 	-- Constant Rate Factor (CRF). The value meaning and limits may change,
 	-- from codec to codec. Set to -1 to disable.
-	crf = 10,
+	crf = 25,
 	-- Useful for flags that may impact output filesize, such as qmin, qmax etc
 	-- Won't be applied when strict_filesize_constraint is on.
 	non_strict_additional_flags = "",
 	-- Display the encode progress, in %. Requires run_detached to be disabled.
 	-- On Windows, it shows a cmd popup. "auto" will display progress on non-Windows platforms.
-	display_progress = "auto",
+	display_progress = "yes",
 	-- The font size used in the menu. Isn't used for the notifications (started encode, finished encode etc)
 	font_size = 28,
 	margin = 10,
